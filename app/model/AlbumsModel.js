@@ -1,4 +1,4 @@
-Ext.define('iMusic.model.ArtistsModel', {
+Ext.define('iMusic.model.AlbumsModel', {
 	extend : 'Ext.data.Model',
 	fields : [
 		{
@@ -6,7 +6,11 @@ Ext.define('iMusic.model.ArtistsModel', {
 			type : 'string'
 		},
 		{
-			name : 'listeners',
+			name : 'playcount',
+			type : 'string'
+		},
+		{
+			name : 'mbid',
 			type : 'string'
 		},
 		{
@@ -16,10 +20,6 @@ Ext.define('iMusic.model.ArtistsModel', {
 		},
 		{
 			name : 'image',
-			type : 'string'
-		},
-		{
-			name : 'mbid',
 			type : 'string'
 		}
 	]

@@ -39,7 +39,7 @@ Ext.define('iMusic.view.main.Main', {
             reference : 'artistResults'
         });
         this.albumsGrid = Ext.widget('albumsGrid', {
-
+            reference : 'albumsGrid'
         });
         this.btn = Ext.widget('button', {
             text : 'Resize',

@@ -4,10 +4,16 @@ Ext.define('iMusic.controller.iMusicController', {
 	init : function()
 	{
 		this.artistsGrid = this.lookupReference('artistResults');
+		this.albumsGrid = this.lookupReference('albumsGrid');
 		this.searchPanel = this.lookupReference('searchPanel');
 		this.searchButton = this.searchPanel.lookupReference('btnSearch');
 		this.txtArtistName = this.searchPanel.lookupReference('txtArtistName');
+
+
 		this.searchButton.on('click', this.onClickSearchButton, this);
+		this.artistsGrid.on('select', this.onSelectArtist, this);
+
+
 		this.button = this.lookupReference('btn');
 		this.button.on('click', this.buttonClick, this);
 	},
@@ -31,5 +37,16 @@ Ext.define('iMusic.controller.iMusicController', {
 	},
 	onLoadArtistsStore : function( store, records, eOpts) {
 		this.artistsGrid.setTitle(store.getCount() + ' results found for "' + store.getProxy().extraParams.artist + '"');
+	},
+	onSelectArtist : function ( grid, record, index, eOpts)
+	{
+		var mbid = record.get('mbid');
+		this.albumsGrid.store.getProxy().extraParams.mbid = mbid;
+		this.albumsGrid.store.load();
+		this.albumsGrid.store.on('load', this.onLoadAlbumsStore, this);
+	},
+	onLoadAlbumsStore : function( store , record, eOpts)
+	{
+		this.albumsGrid.setTitle( 'Top ' +  store.getCount() + ' Albums by this Artist');
 	}
 });

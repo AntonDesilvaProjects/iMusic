@@ -8,20 +8,18 @@
 Ext.define('iMusic.view.main.Main', {
     extend: 'Ext.container.Container',
     requires: [
-        'iMusic.view.main.MainController',
-        'iMusic.view.main.MainModel',
         'iMusic.view.ArtistSearchResultsGrid',
+        'iMusic.model.ArtistsModel',
+        'iMusic.store.ArtistsStore',
         'iMusic.view.AlbumsGrid',
         'iMusic.view.SearchPanel',
-        'iMusic.view.AlbumInfoPanel'
+        'iMusic.view.AlbumInfoPanel',
+        'iMusic.controller.iMusicController'
     ],
     width : 950,
-    xtype: 'app-main',
+    xtype: 'widget.app-main',
     
-    controller: 'main',
-    viewModel: {
-        type: 'main'
-    },
+    controller: 'musicCtrl',
 
     layout: {
         type: 'table',
@@ -30,14 +28,15 @@ Ext.define('iMusic.view.main.Main', {
 
     initComponent : function(){
         this.searchPanel = Ext.widget('searchPanel', {
-             colspan : 1
+             colspan : 1,
+             reference : 'searchPanel'
         });
         this.albumInfoPanel = Ext.widget('albumInfoPanel', {
             colspan : 1,
             rowspan : 3
         });
         this.artistResultsGrid = Ext.widget('artistResultsGrid', {
-
+            reference : 'artistResults'
         });
         this.albumsGrid = Ext.widget('albumsGrid', {
 
@@ -68,7 +67,12 @@ Ext.define('iMusic.view.main.Main', {
             }
         });
 
-        this.items = [this.searchPanel, this.albumInfoPanel, this.artistResultsGrid, this.albumsGrid, this.btn];
+        this.items = [this.searchPanel, this.albumInfoPanel, this.artistResultsGrid, this.albumsGrid, this.btn,
+        {
+            xtype : 'button',
+            text : 'click',
+            reference : 'btn'
+        }];
         this.callParent(arguments);
     },
 

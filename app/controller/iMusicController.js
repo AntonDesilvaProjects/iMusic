@@ -24,7 +24,12 @@ Ext.define('iMusic.controller.iMusicController', {
 		this.artistsGrid.doLayout();
 	},
 	onClickSearchButton : function() {
-		this.artistsGrid.store.getProxy().url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + this.txtArtistName.getValue() + '&api_key=9e06552272f88d46f3feac75b2254335&format=json'
+		//this.artistsGrid.store.getProxy().url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + this.txtArtistName.getValue() + '&api_key=9e06552272f88d46f3feac75b2254335&format=json'
+		this.artistsGrid.store.getProxy().extraParams.artist = this.txtArtistName.getValue();
 		this.artistsGrid.store.load();
+		this.artistsGrid.store.on('load', this.onLoadArtistsStore, this);
 	},
+	onLoadArtistsStore : function( store, records, eOpts) {
+		this.artistsGrid.setTitle(store.getCount() + ' results found for "' + store.getProxy().extraParams.artist + '"');
+	}
 });

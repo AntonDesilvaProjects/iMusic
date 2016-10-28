@@ -11,7 +11,8 @@ Ext.define('iMusic.Application', {
     stores: [
         // TODO: add global / shared stores here
         'iMusic.store.ArtistsStore',
-        'iMusic.store.AlbumsStore'
+        'iMusic.store.AlbumsStore',
+        'iMusic.store.TracksStore'
     ],
     
     launch: function () {

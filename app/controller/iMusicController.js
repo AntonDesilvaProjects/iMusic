@@ -28,6 +28,12 @@ Ext.define('iMusic.controller.iMusicController', {
 		});*/
 		//console.log(s.getAt(0));
 		this.artistsGrid.doLayout();
+		var s = Ext.create('iMusic.store.TracksStore');
+		s.getProxy().extraParams.mbid = '8281dcab-b75d-4cde-b275-1c07862690f2';
+		s.load();
+		s.on('load', function(store, records){
+			console.log(records);
+		});
 	},
 	onClickSearchButton : function() {
 		//this.artistsGrid.store.getProxy().url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + this.txtArtistName.getValue() + '&api_key=9e06552272f88d46f3feac75b2254335&format=json'

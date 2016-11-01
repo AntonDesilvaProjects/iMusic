@@ -32,7 +32,7 @@ Ext.define('iMusic.controller.iMusicController', {
 		s.getProxy().extraParams.mbid = '8281dcab-b75d-4cde-b275-1c07862690f2';
 		s.load();
 		s.on('load', function(store, records){
-			console.log(records);
+			console.log(store.getAt(0).tracks().getAt(1).get('name'));//.get('tracks').track[0]);
 		});
 	},
 	onClickSearchButton : function() {

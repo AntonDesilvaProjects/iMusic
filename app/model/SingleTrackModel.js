@@ -2,9 +2,9 @@ Ext.define('iMusic.model.SingleTrackModel', {
 	extend : 'Ext.data.Model',
 	fields : [
 		{
-			name : 'name',
+			name : 'trackName',
 			type : 'string',
-			//mapping : 'tracks.track'
+			mapping : 'name'
 		},
 		{
 			name : 'url',

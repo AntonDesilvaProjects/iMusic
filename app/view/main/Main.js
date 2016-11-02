@@ -33,7 +33,8 @@ Ext.define('iMusic.view.main.Main', {
         });
         this.albumInfoPanel = Ext.widget('albumInfoPanel', {
             colspan : 1,
-            rowspan : 3
+            rowspan : 3,
+            reference : 'albumInfoPanel'
         });
         this.artistResultsGrid = Ext.widget('artistResultsGrid', {
             reference : 'artistResults'

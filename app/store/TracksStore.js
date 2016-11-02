@@ -1,6 +1,7 @@
 Ext.define('iMusic.store.TracksStore', {
 	extend : 'Ext.data.Store',
 	model : 'iMusic.model.TracksModel',
+	autoLoad : false,
 	proxy : {
 		type : 'ajax',
 		method : 'GET',

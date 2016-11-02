@@ -1,13 +1,14 @@
 Ext.define('iMusic.model.TracksModel', {
 	extend : 'Ext.data.Model',
 	requires: [
-		'iMusic.model.SingleTrackModel'
+		'iMusic.model.SingleTrackModel',
+		'iMusic.model.AlbumImagesModel'
 	],
 	fields : [
 		{
-			name : 'name2',
+			name : 'albumName',
 			type : 'string',
-			mapping : 'name',
+			mapping : 'name'
 		},
 		{
 			name : 'mbid',
@@ -20,15 +21,18 @@ Ext.define('iMusic.model.TracksModel', {
 		{
 			name : 'playcount',
 			type : 'string'
-		},
-		{
-			name : 'image',
-			type : 'string'
 		}
 	],
-	hasMany : [{
-		model : 'iMusic.model.SingleTrackModel',
-		name : 'tracks',
-		associationKey : 'tracks.track'
-	}]
+	hasMany : [
+		{
+			model : 'iMusic.model.SingleTrackModel',
+			name : 'tracks',
+			associationKey : 'tracks.track'
+		},
+		{
+			model : 'iMusic.model.AlbumImagesModel',
+			name : 'images',
+			associationKey : 'image'
+		}
+	]
 });

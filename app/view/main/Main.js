@@ -16,7 +16,7 @@ Ext.define('iMusic.view.main.Main', {
         'iMusic.view.AlbumInfoPanel',
         'iMusic.controller.iMusicController'
     ],
-    width : 950,
+    width : 1075,
     xtype: 'widget.app-main',
     
     controller: 'musicCtrl',

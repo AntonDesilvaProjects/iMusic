@@ -14,6 +14,14 @@ Ext.define('iMusic.model.SingleTrackModel', {
 		{
 			name : 'duration',
 			type : 'string',
+			convert : function(value)
+			{
+				var mins = Math.floor(value / 60);
+				var seconds = value % 60;
+				if( seconds % 10 == seconds)
+					seconds = '0' + seconds;
+				return mins + ':' + seconds
+			}
 			//mapping : 'tracks.track'
 		}
 	]

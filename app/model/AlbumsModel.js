@@ -23,11 +23,7 @@ Ext.define('iMusic.model.AlbumsModel', {
 		},
 		{
 			name : 'albumImage',
-			type : 'string',
-			convert : function(input, model){
-				//return model.images().getAt(1).get('#text');
-				return "";
-			}
+			type : 'string'
 		}
 	],
 	hasMany : [

@@ -8,7 +8,7 @@ Ext.define('iMusic.view.ArtistSearchResultsGrid', {
 	columns : [
 		{ 
 			text : 'Image', 
-			dataIndex : 'albumImage', 
+			dataIndex : 'artistImage', 
 			renderer: function(value){
        			 return '<img src="' + value + '" />';
    	 		}, 

@@ -1,5 +1,8 @@
 Ext.define('iMusic.model.ArtistsModel', {
 	extend : 'Ext.data.Model',
+	requires : [
+		'iMusic.model.ArtistImageModel'
+	],
 	fields : [
 		{
 			name : 'name',
@@ -15,12 +18,19 @@ Ext.define('iMusic.model.ArtistsModel', {
 			mapping : 'url'
 		},
 		{
-			name : 'image',
+			name : 'artistImage',
 			type : 'string'
 		},
 		{
 			name : 'mbid',
 			type : 'string'
+		}
+	],
+	hasMany : [
+		{
+			model : 'iMusic.model.ArtistImageModel',
+			name : 'images',
+			associationKey : 'image'
 		}
 	]
 });

@@ -1,4 +1,4 @@
-Ext.define('iMusic.model.AlbumImagesModel', {
+Ext.define('iMusic.model.ArtistImageModel', {
 	extend : 'Ext.data.Model',
 	fields : [
 		{
@@ -10,4 +10,4 @@ Ext.define('iMusic.model.AlbumImagesModel', {
 			type : 'string'
 		}
 	]
-});
+})

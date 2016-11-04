@@ -56,6 +56,9 @@ Ext.define('iMusic.controller.iMusicController', {
 	},
 	onLoadArtistsStore : function( store, records, eOpts) {
 		this.artistsGrid.setTitle(store.getCount() + ' results found for "' + store.getProxy().extraParams.artist + '"');
+		store.each( function( current ) {
+			current.set('artistImage', current.images().getAt(1).get('#text'));
+		});
 	},
 	onSelectArtist : function ( grid, record, index, eOpts)
 	{
@@ -67,5 +70,8 @@ Ext.define('iMusic.controller.iMusicController', {
 	onLoadAlbumsStore : function( store , record, eOpts)
 	{
 		this.albumsGrid.setTitle( 'Top ' +  store.getCount() + ' Albums by this Artist');
+		store.each( function( current ) {
+			current.set('albumImage', current.images().getAt(1).get('#text'));
+		});
 	}
 });

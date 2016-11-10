@@ -9,11 +9,14 @@ Ext.define('iMusic.controller.iMusicController', {
 		this.searchButton = this.searchPanel.lookupReference('btnSearch');
 		this.txtArtistName = this.searchPanel.lookupReference('txtArtistName');
 		this.albumInfoPanel = this.lookupReference('albumInfoPanel');
+		this.trackGrid = this.albumInfoPanel.lookupReference('trackGrid');
+		this.mediaPanel = this.albumInfoPanel.lookupReference('mediaPanel');
 
 
 		this.searchButton.on('click', this.onClickSearchButton, this);
 		this.artistsGrid.on('select', this.onSelectArtist, this);
 		this.albumsGrid.on('select', this.onSelectAlbum, this);
+		this.trackGrid.on('select', this.onSelectTrack, this);
 
 
 		this.button = this.lookupReference('btn');
@@ -29,13 +32,19 @@ Ext.define('iMusic.controller.iMusicController', {
 				console.log('failed :(');
 		});*/
 		//console.log(s.getAt(0));
-		this.artistsGrid.doLayout();
-		var s = Ext.create('iMusic.store.TracksStore');
-		s.getProxy().extraParams.mbid = '8281dcab-b75d-4cde-b275-1c07862690f2';
-		s.load();
-		s.on('load', function(store, records){
-			console.log(store.getAt(0).tracks().getAt(1).get('name'));//.get('tracks').track[0]);
-		});
+		//this.artistsGrid.doLayout();
+		
+	},
+	onSelectTrack : function( grid, record, index, eOpts)
+	{
+		var songResults = Ext.create('iMusic.store.YoutubeSearchStore');
+		songResults.getProxy().extraParams.q = record.get('trackName');
+		songResults.load();
+		songResults.on('load', this.onSongResultsLoad, this);
+	},
+	onSongResultsLoad : function(store, records, eOpts) {
+		this.mediaPanel.mediaPlayer.update('<iframe width="380" height="200" src="https://www.youtube.com/embed/' + store.getAt(0).get('videoId') + '?autoplay=1"></iframe>');
+		this.mediaPanel.getLayout().setActiveItem(1);
 	},
 	onSelectAlbum : function(grid, record, index, eOpts){
 		//alert('clicked');

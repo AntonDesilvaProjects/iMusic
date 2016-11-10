@@ -13,7 +13,8 @@ Ext.define('iMusic.Application', {
         'iMusic.store.ArtistsStore',
         'iMusic.store.AlbumsStore',
         'iMusic.store.TracksStore',
-        'iMusic.store.TrackGridStore'
+        'iMusic.store.TrackGridStore',
+        'iMusic.store.YoutubeSearchStore'
     ],
     
     launch: function () {

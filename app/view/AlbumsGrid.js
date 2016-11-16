@@ -1,10 +1,10 @@
 Ext.define('iMusic.view.AlbumsGrid', {
 	extend : 'Ext.grid.Panel',
 	xtype : 'albumsGrid',
-	title : '5 Albums found from "The All American Eagles"',
+	title : 'Albums',//'5 Albums found from "The All American Eagles"',
 	store : 'iMusic.store.AlbumsStore',
-	width : 700,
-	height : 300,
+	width : '100%',//700,
+	height : 425,
 	columns : [
 		{ 
 			text : 'Image', 

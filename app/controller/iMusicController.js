@@ -19,8 +19,8 @@ Ext.define('iMusic.controller.iMusicController', {
 		this.trackGrid.on('select', this.onSelectTrack, this);
 
 
-		this.button = this.lookupReference('btn');
-		this.button.on('click', this.buttonClick, this);
+		//this.button = this.lookupReference('btn');
+		//this.button.on('click', this.buttonClick, this);
 	},
 	buttonClick: function() {
 		/*var s = Ext.create('iMusic.store.ArtistsStore');
@@ -37,13 +37,15 @@ Ext.define('iMusic.controller.iMusicController', {
 	},
 	onSelectTrack : function( grid, record, index, eOpts)
 	{
+		console.log(record.get('artist'));
 		var songResults = Ext.create('iMusic.store.YoutubeSearchStore');
-		songResults.getProxy().extraParams.q = record.get('trackName');
+		songResults.getProxy().extraParams.q = this.albumInfoPanel.currentArtist + ' ' + record.get('trackName');
+		console.log('Query: ' + songResults.getProxy().extraParams.q );
 		songResults.load();
 		songResults.on('load', this.onSongResultsLoad, this);
 	},
 	onSongResultsLoad : function(store, records, eOpts) {
-		this.mediaPanel.mediaPlayer.update('<iframe width="380" height="200" src="https://www.youtube.com/embed/' + store.getAt(0).get('videoId') + '?autoplay=1"></iframe>');
+		this.mediaPanel.mediaPlayer.update('<iframe width="380" height="200" src="https://www.youtube.com/embed/' + store.getAt(0).get('videoId') + '?autoplay=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1"></iframe>');
 		this.mediaPanel.getLayout().setActiveItem(1);
 	},
 	onSelectAlbum : function(grid, record, index, eOpts){
@@ -56,12 +58,21 @@ Ext.define('iMusic.controller.iMusicController', {
 	onLoadTracksStore : function( store, records, eOpts)
 	{
 		this.albumInfoPanel.populateData();
+		this.albumInfoPanel.expand();
 	},
 	onClickSearchButton : function() {
 		//this.artistsGrid.store.getProxy().url = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' + this.txtArtistName.getValue() + '&api_key=9e06552272f88d46f3feac75b2254335&format=json'
-		this.artistsGrid.store.getProxy().extraParams.artist = this.txtArtistName.getValue();
-		this.artistsGrid.store.load();
-		this.artistsGrid.store.on('load', this.onLoadArtistsStore, this);
+		var query = this.txtArtistName.getValue();
+		if(query)
+		{
+			this.artistsGrid.store.getProxy().extraParams.artist = this.txtArtistName.getValue();
+			this.artistsGrid.store.load();
+			this.artistsGrid.store.on('load', this.onLoadArtistsStore, this);
+		}
+		else
+		{
+			//Do nothing
+		}
 	},
 	onLoadArtistsStore : function( store, records, eOpts) {
 		this.artistsGrid.setTitle(store.getCount() + ' results found for "' + store.getProxy().extraParams.artist + '"');

@@ -9,7 +9,7 @@ Ext.define('iMusic.view.SearchPanel', {
 		{
 			xtype : 'textfield', 
 			emptyText : 'Enter Artist name',
-			margin : '10 10 10 200',
+			margin : '10 10 10 450',
 			reference : 'txtArtistName'
 		},
 		{

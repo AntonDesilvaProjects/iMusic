@@ -1,10 +1,10 @@
 Ext.define('iMusic.view.ArtistSearchResultsGrid', {
 	extend : 'Ext.grid.Panel',
 	xtype : 'artistResultsGrid',
-	title : '17 Results found for "Eagles"',
+	title : 'Artists',//'17 Results found for "Eagles"',
 	store : 'iMusic.store.ArtistsStore' ,
-	width : 700,
-	height : 300,
+	width : '100%',//700,
+	height : 425,
 	columns : [
 		{ 
 			text : 'Image', 

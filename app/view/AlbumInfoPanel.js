@@ -6,14 +6,14 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 		'iMusic.view.AlbumMediaPanel'
 	],
 	xtype : 'albumInfoPanel',
-	title : 'Coldplay - Parachutes',
-	width : 450,
+	title : 'Album Info',
+	width : 375,
 	height : 650,
 	layout : 'vbox',
 	store : null,
 	referenceHolder : true,
 	initComponent : function() {
-
+		this.currentArtist = "";
 		this.store = Ext.create('iMusic.store.TracksStore');
 		this.albumMediaPanel = Ext.create('iMusic.view.AlbumMediaPanel',{
 			reference : 'mediaPanel'
@@ -26,8 +26,8 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 		});
 		this.trackGrid = Ext.widget('grid', {
 			title :null,
-			width : 340,
-			hieght : 600,
+			width : 375,
+			height : 575,
 			columns : [
 				{ text : 'Name', dataIndex : 'trackName', flex : 4},
 				{ text : 'Duration', dataIndex : 'duration', flex: 2},
@@ -50,11 +50,19 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 		this.callParent(arguments);
 	},
 	populateData : function(){
-		this.setTitle(this.store.getAt(0).get('albumName'));
-		this.albumMediaPanel.setImage(this.store.getAt(0).images().getAt(3).get('#text'));
-		this.trackGrid.getStore().loadRecords(this.store.getAt(0).tracks().getRange(0,this.store.getAt(0).tracks().getCount() ));
-		/*this.trackGrid.store = this.store.getAt(0).tracks(); 
-		this.trackGrid.getView().ds.reload();*/
-		console.log(this.store.getAt(0).images());
+		if(this.store.getAt(0)){
+			this.setTitle(this.store.getAt(0).get('albumName'));
+			this.albumMediaPanel.setImage(this.store.getAt(0).images().getAt(3).get('#text'));
+			this.trackGrid.getStore().loadRecords(this.store.getAt(0).tracks().getRange(0,this.store.getAt(0).tracks().getCount() ));
+			console.log(this.store.getAt(0).images());
+			this.currentArtist = this.store.getAt(0).get('artist');
+		}
+		else
+			Ext.Msg.show({
+			     title: 'Information Unavailable',
+			     msg: 'Album information currently unavailable',
+			     buttons: Ext.Msg.OK,
+			     icon: Ext.Msg.ERROR
+			});
 	}
 });

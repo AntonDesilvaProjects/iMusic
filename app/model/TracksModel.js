@@ -21,6 +21,10 @@ Ext.define('iMusic.model.TracksModel', {
 		{
 			name : 'playcount',
 			type : 'string'
+		},
+		{
+			name : 'artist',
+			type : 'string'
 		}
 	],
 	hasMany : [

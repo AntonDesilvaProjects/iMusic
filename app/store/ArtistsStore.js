@@ -7,12 +7,12 @@ Ext.define('iMusic.store.ArtistsStore', {
 		type : 'ajax',
 		method : 'GET',
 		extraParams : {
-			'api_key': '9e06552272f88d46f3feac75b2254335',
+			'api_key': '',
 			'format' : 'json',
 			'method' : 'artist.search',
 			'artist' : null
 		},
-		url : 'http://ws.audioscrobbler.com/2.0',//?method=artist.search&artist=cher&api_key=9e06552272f88d46f3feac75b2254335&format=json',
+		url : 'http://ws.audioscrobbler.com/2.0',
 		reader : {
 			type : 'json',
 			rootProperty : 'results.artistmatches.artist'

@@ -4,7 +4,7 @@ Ext.define('iMusic.store.AlbumsStore', {
 	proxy : {
 		type : 'ajax',
 		extraParams : {
-			'api_key': '9e06552272f88d46f3feac75b2254335',
+			'api_key': '',
 			'format' : 'json',
 			'method' : 'artist.gettopalbums',
 			'mbid' : null

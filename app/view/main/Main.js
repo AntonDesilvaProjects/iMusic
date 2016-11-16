@@ -17,31 +17,37 @@ Ext.define('iMusic.view.main.Main', {
         'iMusic.view.AlbumMediaPanel',
         'iMusic.controller.iMusicController'
     ],
-    width : 1075,
+    width : 1075,//1075,
     xtype: 'widget.app-main',
     
     controller: 'musicCtrl',
 
-    layout: {
+    /*layout: {
         type: 'table',
         columns : 2
-    },
+    },*/
+    layout : 'border',
 
     initComponent : function(){
         this.searchPanel = Ext.widget('searchPanel', {
              colspan : 1,
-             reference : 'searchPanel'
+             reference : 'searchPanel',
+             region : 'north'
         });
         this.albumInfoPanel = Ext.widget('albumInfoPanel', {
             colspan : 1,
             rowspan : 3,
-            reference : 'albumInfoPanel'
+            reference : 'albumInfoPanel',
+            region : 'east',
+            collapsible : true
         });
         this.artistResultsGrid = Ext.widget('artistResultsGrid', {
-            reference : 'artistResults'
+            reference : 'artistResults',
+            //region : 'center'
         });
         this.albumsGrid = Ext.widget('albumsGrid', {
-            reference : 'albumsGrid'
+            reference : 'albumsGrid',
+            //region : 'center'
         });
         this.btn = Ext.widget('button', {
             text : 'Resize',
@@ -69,12 +75,24 @@ Ext.define('iMusic.view.main.Main', {
             }
         });
 
-        this.items = [this.searchPanel, this.albumInfoPanel, this.artistResultsGrid, this.albumsGrid, this.btn,
-        {
+        this.items = [
+            this.searchPanel, 
+            this.albumInfoPanel,
+            {
+                xtype : 'panel',
+                layout : 'vbox',
+                region : 'center',
+                items : [
+                    this.artistResultsGrid, 
+                    this.albumsGrid
+                ]//, this.btn,
+            }
+        ];
+       /* {
             xtype : 'button',
             text : 'click',
             reference : 'btn'
-        }];
+        }];*/
         this.callParent(arguments);
     },
 

@@ -18,6 +18,30 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 		this.albumMediaPanel = Ext.create('iMusic.view.AlbumMediaPanel',{
 			reference : 'mediaPanel'
 		});
+		this.mediaPanelControl = Ext.widget('panel', {
+			layout: {
+				type : 'hbox',
+         		pack : 'center',
+       		 	align : 'middle'
+      		},
+			referenceHolder : true,
+			reference : 'mediaPanelControl',
+			items : [
+				{
+					xtype : 'button',
+					text : '<',
+					reference : 'backBtn',
+					hidden : true,
+					margin : '0 0 0 10'
+				},
+				{
+					xtype : 'button',
+					text : '>',
+					reference : 'fwdBtn',
+					margin : '0 0 0 335'
+				}
+			]
+		});
 		this.albumImage = Ext.widget('image', {
 			src : 'https://upload.wikimedia.org/wikipedia/en/5/57/Coldplayparachutesalbumcover.jpg',
 			height : 200,
@@ -27,14 +51,14 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 		this.trackGrid = Ext.widget('grid', {
 			title :null,
 			width : 375,
-			height : 575,
+			height : 550,
 			columns : [
 				{ text : 'Name', dataIndex : 'trackName', flex : 4},
 				{ text : 'Duration', dataIndex : 'duration', flex: 2},
 				{
 					renderer : function(value)
 					{
-						return '<img src="http://suptg.thisisnotatrueending.com/archive/9411513/images/1272205620544.gif" style="width:25px;height:25px;">'
+						return '<img src="http://www.northernrestaurantequipment.com/img/playButton.png" style="width:25px;height:25px;">'
 					},
 					flex : 1
 				}
@@ -43,8 +67,11 @@ Ext.define('iMusic.view.AlbumInfoPanel', {
 			padding : '10 0 0 10', 
 			reference : 'trackGrid'
 		});
+
 		this.items = [
 			this.albumMediaPanel,
+			this.mediaPanelControl
+			,
 			this.trackGrid
 		];
 		this.callParent(arguments);

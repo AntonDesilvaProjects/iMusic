@@ -15,11 +15,17 @@ Ext.define('iMusic.view.AlbumMediaPanel', {
 
 		this.mediaPlayer = Ext.widget( 'panel', {
 			//html : '<iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>',
-			html : 'Loading track...',
+			html : 'Please select a track to play...',
 			padding : '10 0 10 0'
 		});
+		/*this.lblNowPlaying = Ext.widget('label', {
+			text : 'Bruno Mars - Grenade',
+			align : 'center'
+		});*/
+
 
 		this.items = [
+
 			{
 				items : this.albumImage
 			},

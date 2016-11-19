@@ -1,5 +1,5 @@
 # iMusic
-A music/album search applicatiom built with ExtJS 5.0.1 and LastFM API. Discover and listen to artists, albums, and tracks.  
+A music/album search application built with ExtJS 5.0.1 and LastFM API. Discover and listen to artists, albums, and tracks.  
 
 ### Searching for content
 ![alt text](https://raw.githubusercontent.com/AntonDesilvaProjects/iMusic/master/Image%231.JPG "Searching for albums")

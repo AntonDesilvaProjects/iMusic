@@ -14,7 +14,7 @@ Playing a track
   This is purely a client-side application so you need your own API keys to use the application. To get the keys, follow the instructions below.
   
 1. Obtain Youtube API key from Google API. Follow the instructions [here](https://developers.google.com/youtube/v3/getting-started) to obtain and activate your key.
-2. You will also need a LastFM API key. Obtains it [here](http://www.last.fm/api/account/create).
+2. You will also need a LastFM API key. Obtain it [here](http://www.last.fm/api/account/create).
 3. Once you have your keys, place them in the `/app/Config.js` file in the lines shown below:
 
   ```javascript
